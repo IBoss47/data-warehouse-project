@@ -13,16 +13,6 @@ select
 from bronze.crm_cust_info;
 go
 
-bulk insert bronze.vw_crm_cust_info
-from '/var/opt/mssql/data/source_crm/cust_info.csv'
-with(
-    firstrow = 2,
-    fieldterminator = ',',
-    rowterminator = '\r\n',
-    tablock
-);
-go
-
 create or alter view bronze.vw_crm_prd_info as
 select
     prd_id,
@@ -33,16 +23,6 @@ select
     prd_start_dt,
     prd_end_dt
 from bronze.crm_prd_info;
-go
-
-bulk insert bronze.vw_crm_prd_info
-from '/var/opt/mssql/data/source_crm/prd_info.csv'
-with(
-    firstrow = 2,
-    fieldterminator = ',',
-    rowterminator = '\r\n',
-    tablock
-);
 go
 
 create or alter view bronze.vw_crm_sales_details as
@@ -56,19 +36,8 @@ select
     sls_sales,
     sls_quantity,
     sls_price
-from bronze.crm_sales_details
+from bronze.crm_sales_details;
 go
-
-bulk insert bronze.vw_crm_sales_details
-from '/var/opt/mssql/data/source_crm/sales_details.csv'
-with(
-    firstrow = 2,
-    fieldterminator = ',',
-    rowterminator = '\r\n',
-    tablock
-);
-go
-
 
 
 
