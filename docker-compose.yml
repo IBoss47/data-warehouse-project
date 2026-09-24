@@ -3,7 +3,6 @@ services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: sql_server_container
-    # กำหนด architecture สำหรับ Mac ชิป Apple Silicon (M1/M2/M3)
     platform: linux/amd64
     restart: always
     environment:
@@ -12,8 +11,8 @@ services:
     ports:
       - "1433:1433"
     volumes:
-      # ผูก Volume เพื่อบันทึกข้อมูลตารางไว้ในเครื่อง ไม่ให้หายเมื่อปิด Container
-      - mssql_data:/var/opt/mssql
+      - mssql_data:/var/opt/mssql/data
+      - ./data:/var/opt/mssql/data
 
 volumes:
   mssql_data:
