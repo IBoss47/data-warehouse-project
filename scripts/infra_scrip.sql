@@ -20,6 +20,7 @@ go
 -- Check database... if it exists will be drop database
 if exists (select 1 from sys.databases where name = 'DataWareHouse')
 begin
+    use master;
     -- set only one user can access... another user will be disconnect database (rollback)
     alter database DataWareHouse set single_user with rollback immediate;
     drop database DataWareHouse;
