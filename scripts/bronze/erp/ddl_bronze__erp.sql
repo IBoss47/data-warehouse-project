@@ -1,4 +1,4 @@
-if OBJECT_ID('bronze.erm_loc_a101', 'U') is null
+if OBJECT_ID('bronze.erp_loc_a101', 'U') is null
 begin
     create table bronze.erp_loc_a101(
         cid NVARCHAR(50),
@@ -14,7 +14,7 @@ if OBJECT_ID('bronze.erp_cust_az12', 'U') is null
 begin
     CREATE TABLE bronze.erp_cust_az12 (
         cid    NVARCHAR(50),
-        bdate  DATE,
+        bdate  NVARCHAR(50),
         gen    NVARCHAR(50),
 
         dwh_create_at datetime default GETDATE(),

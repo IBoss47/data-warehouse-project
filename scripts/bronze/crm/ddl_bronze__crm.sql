@@ -1,3 +1,6 @@
+use DataWareHouse;
+go
+
 if OBJECT_ID('bronze.crm_prd_info', 'U') is null
 begin
     create table bronze.crm_prd_info (
@@ -6,8 +9,8 @@ begin
         prd_nm       NVARCHAR(50),
         prd_cost     INT,
         prd_line     NVARCHAR(50),
-        prd_start_dt DATETIME,
-        prd_end_dt   DATETIME,
+        prd_start_dt NVARCHAR(50),
+        prd_end_dt   NVARCHAR(50),
 
         dwh_create_at datetime default GETDATE(),
         dwh_update_at datetime default GETDATE()
@@ -43,7 +46,7 @@ begin
         cst_lastname        NVARCHAR(50),
         cst_marital_status  NVARCHAR(50),
         cst_gndr            NVARCHAR(50),
-        cst_create_date     DATE,
+        cst_create_date     NVARCHAR(50),
 
         dwh_create_at datetime default GETDATE(),
         dwh_update_at datetime default GETDATE()
