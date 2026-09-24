@@ -1,0 +1,20 @@
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server_container
+    # กำหนด architecture สำหรับ Mac ชิป Apple Silicon (M1/M2/M3)
+    platform: linux/amd64
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=MyPass1234!
+    ports:
+      - "1433:1433"
+    volumes:
+      # ผูก Volume เพื่อบันทึกข้อมูลตารางไว้ในเครื่อง ไม่ให้หายเมื่อปิด Container
+      - mssql_data:/var/opt/mssql
+
+volumes:
+  mssql_data:
+    driver: local
